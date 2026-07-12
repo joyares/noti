@@ -1,0 +1,27 @@
+﻿# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# PHP
+vendor/
+composer.lock
+.env
+.env.local
+config/config.local.php
+
+# Application specific
+storage/uploads/*
+!storage/uploads/.gitkeep
+logs/*
+!logs/.gitkeep
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

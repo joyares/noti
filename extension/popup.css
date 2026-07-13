@@ -1,0 +1,92 @@
+/* Noti Web Clipper — popup, using the Noti design tokens. */
+
+:root {
+  --bg-shell: #0c0e0d;
+  --bg-card: #151918;
+  --bg-card-h: #1a1f1d;
+  --text-1: #e8ece9;
+  --text-3: rgba(255, 255, 255, .48);
+  --text-4: rgba(255, 255, 255, .35);
+  --accent: #57c785;
+  --accent-tint: rgba(87, 199, 133, .10);
+  --border: rgba(255, 255, 255, .08);
+  --danger: #d1857a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+
+body {
+  width: 320px;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-1);
+  background: var(--bg-shell);
+  padding: 14px;
+}
+
+.head { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.logo-tile {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 7px;
+  background: var(--accent); color: #0c0e0d;
+  font-weight: 700; font-size: 14px;
+}
+.logo-word { font-weight: 600; font-size: 15px; }
+.head-note { margin-left: auto; font-size: 10px; color: var(--text-4); }
+
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.field span {
+  font-size: 10px; font-weight: 600; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--text-4);
+}
+.field span em { text-transform: none; letter-spacing: 0; font-style: normal; }
+.field input, .field select {
+  background: var(--bg-card); color: var(--text-1);
+  border: 1px solid var(--border); border-radius: 7px;
+  padding: 8px 10px; font-size: 13px; outline: none; width: 100%;
+}
+.field input:focus, .field select:focus { border-color: var(--accent); }
+
+.btn-primary {
+  background: var(--accent); color: #0c0e0d;
+  font-weight: 600; font-size: 12.5px;
+  padding: 8px 10px; border: 0; border-radius: 7px;
+  cursor: pointer; width: 100%;
+}
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-primary:disabled { opacity: .55; cursor: default; }
+
+.tabinfo {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 7px; padding: 9px 10px; margin-bottom: 10px;
+}
+.tabinfo-title {
+  font-weight: 600; font-size: 12.5px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tabinfo-url {
+  font-size: 10.5px; color: var(--text-4); margin-top: 2px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+
+.error, .status {
+  border-radius: 7px; padding: 7px 10px;
+  font-size: 12px; margin: 10px 0 0;
+}
+.error { background: rgba(209, 133, 122, .12); color: var(--danger); border: 1px solid rgba(209, 133, 122, .25); }
+.status { background: var(--accent-tint); color: var(--accent); border: 1px solid rgba(87, 199, 133, .25); }
+.status.bad { background: rgba(209, 133, 122, .12); color: var(--danger); border-color: rgba(209, 133, 122, .25); }
+
+.foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 12px; padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--text-3);
+}
+.linkish {
+  background: none; border: 0; color: var(--danger);
+  font-size: 11px; cursor: pointer;
+}

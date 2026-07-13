@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+<header class="head">
+  <span class="logo-tile">N</span>
+  <span class="logo-word">Noti</span>
+  <span class="head-note" id="head-note"></span>
+</header>
+
+<!-- Sign-in view -->
+<section id="view-login" hidden>
+  <label class="field">
+    <span>Noti API URL</span>
+    <input type="url" id="base-url" placeholder="http://localhost/noti/public/api">
+  </label>
+  <label class="field">
+    <span>Email</span>
+    <input type="email" id="email" autocomplete="email">
+  </label>
+  <label class="field">
+    <span>Password</span>
+    <input type="password" id="password" autocomplete="current-password">
+  </label>
+  <div class="error" id="login-error" hidden></div>
+  <button class="btn-primary" id="btn-login">Connect</button>
+</section>
+
+<!-- Save view -->
+<section id="view-save" hidden>
+  <div class="tabinfo">
+    <div class="tabinfo-title" id="tab-title">…</div>
+    <div class="tabinfo-url" id="tab-url"></div>
+  </div>
+
+  <label class="field">
+    <span>Notebook</span>
+    <select id="notebook"></select>
+  </label>
+
+  <label class="field">
+    <span>Comment <em>(optional)</em></span>
+    <input type="text" id="comment" placeholder="Why you saved this…">
+  </label>
+
+  <div class="actions">
+    <button class="btn-primary" id="btn-bookmark">Bookmark</button>
+    <button class="btn-primary" id="btn-page">Save page</button>
+    <button class="btn-primary" id="btn-selection">Save selection</button>
+  </div>
+
+  <div class="status" id="status" hidden></div>
+
+  <footer class="foot">
+    <span id="who"></span>
+    <button class="linkish" id="btn-logout">Sign out</button>
+  </footer>
+</section>
+
+<script src="api.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

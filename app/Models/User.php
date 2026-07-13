@@ -30,4 +30,19 @@ final class User extends Model
     {
         return password_verify($password, $user['password_hash']);
     }
+
+    public function updateProfile(int $id, string $email, string $displayName): void
+    {
+        $this->updateById($id, ['email' => $email, 'display_name' => $displayName]);
+    }
+
+    public function updatePassword(int $id, string $password): void
+    {
+        $this->updateById($id, ['password_hash' => password_hash($password, PASSWORD_BCRYPT)]);
+    }
+
+    public function updateAvatar(int $id, ?string $path): void
+    {
+        $this->updateById($id, ['avatar_path' => $path]);
+    }
 }

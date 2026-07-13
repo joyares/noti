@@ -119,6 +119,12 @@
     }
   });
 
+  /* ═══ Profile: submit avatar as soon as a file is picked ════════ */
+
+  $('[data-avatar-input]')?.addEventListener('change', function () {
+    if (this.files.length) $('[data-avatar-form]').submit();
+  });
+
   /* ═══ Editor ════════════════════════════════════════════════════ */
 
   const editor = $('[data-editor]');

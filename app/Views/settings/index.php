@@ -5,13 +5,14 @@
   </header>
 
   <div class="settings-card">
-    <div class="settings-user">
-      <span class="avatar avatar-lg"><?= e(mb_strtoupper(mb_substr($user['display_name'], 0, 1))) ?></span>
+    <a class="settings-user" href="<?= url('/profile') ?>">
+      <?= avatar_html($user, 'avatar avatar-lg') ?>
       <div>
         <div class="settings-name"><?= e($user['display_name']) ?></div>
         <div class="settings-email"><?= e($user['email']) ?></div>
       </div>
-    </div>
+      <span class="settings-edit-hint">Edit <?= icon('back', 12, 'flip-h') ?></span>
+    </a>
     <div class="settings-row">
       <span>Member since</span>
       <span class="mono"><?= nice_date($user['created_at']) ?></span>

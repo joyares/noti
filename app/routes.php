@@ -8,6 +8,7 @@ use App\Controllers\FileController;
 use App\Controllers\HomeController;
 use App\Controllers\NoteController;
 use App\Controllers\NotebookController;
+use App\Controllers\ProfileController;
 use App\Controllers\SearchController;
 use App\Controllers\SettingsController;
 use App\Controllers\TagController;
@@ -46,6 +47,13 @@ $router->post('/notebooks/{id}/unlock', [NotebookController::class, 'unlock']);
 $router->get('/tags', [TagController::class, 'index']);
 $router->get('/tags/{name}', [TagController::class, 'show']);
 
+$router->get('/profile', [ProfileController::class, 'index']);
+$router->post('/profile', [ProfileController::class, 'update']);
+$router->post('/profile/password', [ProfileController::class, 'password']);
+$router->post('/profile/avatar', [ProfileController::class, 'avatar']);
+$router->post('/profile/avatar/remove', [ProfileController::class, 'removeAvatar']);
+$router->get('/avatar', [ProfileController::class, 'image']);
+
 $router->get('/search', [SearchController::class, 'index']);
 $router->get('/trash', [TrashController::class, 'index']);
 $router->get('/settings', [SettingsController::class, 'index']);
@@ -57,6 +65,8 @@ $router->post('/api/auth/register', [Api\ApiAuthController::class, 'register']);
 $router->post('/api/auth/login', [Api\ApiAuthController::class, 'login']);
 $router->post('/api/auth/logout', [Api\ApiAuthController::class, 'logout']);
 $router->get('/api/me', [Api\ApiAuthController::class, 'me']);
+$router->patch('/api/me', [Api\ApiAuthController::class, 'updateMe']);
+$router->post('/api/me/password', [Api\ApiAuthController::class, 'updatePassword']);
 
 $router->get('/api/notebooks', [Api\ApiNotebookController::class, 'index']);
 $router->post('/api/notebooks', [Api\ApiNotebookController::class, 'store']);

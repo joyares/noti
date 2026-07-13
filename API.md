@@ -48,7 +48,21 @@ Each login issues a new token (one per device); tokens do not expire.
 Revokes the presented bearer token. → `{ "data": true }`
 
 ### GET /api/me
-→ `{ "data": { "id", "email", "display_name", "created_at" } }`
+→ `{ "data": { "id", "email", "display_name", "has_avatar", "created_at" } }`
+
+### PATCH /api/me
+Update profile — send either or both:
+```json
+{ "display_name": "Ada L.", "email": "new@b.com" }
+```
+→ updated me payload. `422` invalid value, `409` email taken by another account.
+
+### POST /api/me/password
+```json
+{ "current_password": "...", "new_password": "min 8 chars" }
+```
+→ `{ "data": true }` · `403` wrong current password, `422` too short.
+Existing tokens stay valid after a password change.
 
 ---
 

@@ -14,7 +14,7 @@ $sortLabel = 'Updated';
       <span class="logo-tile">N</span>
       <span class="logo-word">Noti</span>
     </div>
-    <span class="avatar"><?= e(mb_strtoupper(mb_substr($user['display_name'], 0, 1))) ?></span>
+    <a href="<?= url('/profile') ?>" class="avatar-link" title="Profile"><?= avatar_html($user) ?></a>
   </header>
 
   <button type="button" class="m-search-field" data-open-search>

@@ -20,7 +20,12 @@ function url(string $path = '/'): string
 
 function asset(string $path): string
 {
-    return url('assets/' . ltrim($path, '/'));
+    $path = ltrim($path, '/');
+    // Cache-bust on file change so browsers never serve stale CSS/JS.
+    $file = BASE_PATH . '/public/assets/' . $path;
+    $v    = is_file($file) ? (string) filemtime($file) : '0';
+
+    return url('assets/' . $path) . '?v=' . $v;
 }
 
 function human_bytes(int $bytes): string
@@ -52,6 +57,19 @@ function full_date(string $timestamp): string
     $ts = strtotime($timestamp);
 
     return $ts === false ? '' : date('M j, Y · g:i A', $ts);
+}
+
+/** Avatar: profile picture if set, else the initial letter. */
+function avatar_html(array $user, string $class = 'avatar'): string
+{
+    if (!empty($user['avatar_path'])) {
+        $src = url('/avatar') . '?v=' . substr(md5($user['avatar_path']), 0, 8);
+
+        return '<span class="' . e($class) . '"><img src="' . e($src) . '" alt=""></span>';
+    }
+
+    return '<span class="' . e($class) . '">'
+        . e(mb_strtoupper(mb_substr($user['display_name'] ?? '?', 0, 1))) . '</span>';
 }
 
 /** Tag slug: "Daily Needs" -> "daily-needs". */

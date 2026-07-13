@@ -69,7 +69,7 @@ $defaultNotebookId = $activeNotebookId ?? (int) ($notebooks[0]['id'] ?? 0);
     </div>
 
     <div class="sidebar-user">
-      <span class="avatar"><?= e(mb_strtoupper(mb_substr($user['display_name'], 0, 1))) ?></span>
+      <a href="<?= url('/profile') ?>" class="avatar-link" title="Profile"><?= avatar_html($user) ?></a>
       <span class="user-meta">
         <span class="user-name"><?= e($user['display_name']) ?></span>
         <span class="user-sync"><?= icon('sync', 10) ?> Synced</span>
